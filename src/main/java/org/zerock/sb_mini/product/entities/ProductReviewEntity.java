@@ -1,14 +1,19 @@
 package org.zerock.sb_mini.product.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "tbl_product_review")
+@Getter
+@ToString(exclude = "product")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductReviewEntity {
 
     @Id
@@ -18,6 +23,9 @@ public class ProductReviewEntity {
     private String comment;
     private String score; //1~5
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProductEntity product;
+
     @CreatedDate
     @Column(name = "regDate", updatable = false)
     protected LocalDateTime regDate;
@@ -25,5 +33,6 @@ public class ProductReviewEntity {
     @LastModifiedDate
     @Column(name ="modDate" )
     protected LocalDateTime modDate;
+
 
 }
