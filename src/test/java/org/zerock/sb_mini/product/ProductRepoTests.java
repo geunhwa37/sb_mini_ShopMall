@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
 import org.zerock.sb_mini.product.dto.PageRequestDTO;
 import org.zerock.sb_mini.product.dto.PageResponseDTO;
 import org.zerock.sb_mini.product.dto.ProductListDTO;
@@ -92,9 +93,20 @@ public class ProductRepoTests {
         //ElementCollection이 여러 개인 경우 한 개의 객체로 변환하는데 어려움이 있다.
         //Java 코드를 이용해서 변환해야만 한다.
         ProductEntity product = repo.selectOne(31L);
+
         ProductReadDTO readDTO = new ProductReadDTO(product);
 
         log.info(readDTO);
+    }
+
+    @Test
+    @Commit
+    public void updateProduct() {
+        ProductEntity product = repo.selectOne(31L);
+
+        product.changePrice(3000);
+
+        repo.save(product);
     }
 
 

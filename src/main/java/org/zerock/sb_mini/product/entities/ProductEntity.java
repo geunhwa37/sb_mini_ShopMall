@@ -46,6 +46,10 @@ public class ProductEntity {
     protected LocalDateTime modDate;
 
 
+    //JPA는 가능하면 엔티티 객체를 readonly로 하는 것을 권장 
+    //변경하고 싶을 때는 setXXX이 아니라 별도의 메서드를 이용함(필수는 아님) - 업데이트시!
+    
+    //이미지 추가
     public void addImage(String fileName) {
 
         ProductImgEntity productImgEntity = new ProductImgEntity();
@@ -54,5 +58,22 @@ public class ProductEntity {
 
         images.add(productImgEntity);
     }
+    //이미지 삭제
+    public void clearImages() {
+        images.clear();
+    }
+    // 상품 이름 변경
+    public void changePrice(int price) {
+        this.price = price;
+    }
+    // 상품 가격 변경
+    public void changePname(String pname) {
+        this.pname = pname;
+    }
+    // 상품 설명 변경
+    public void changeDesc(String pdesc) {
+        this.pdesc = pdesc;
+    }
+    
 
 }
