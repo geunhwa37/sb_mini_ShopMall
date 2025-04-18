@@ -14,7 +14,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long>, P
     //목록 출력
     @Query("select p.pno, p.pname, p.price, p.seller, pi.imgName " +
             "from ProductEntity p left join p.images pi " +
-            "where pi.ord = 0")
+            "where pi.ord = 0 and p.delFlag = false")
     Page<Object[]> list(Pageable pageable);
 
     //조회 - 1개

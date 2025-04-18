@@ -29,6 +29,8 @@ public class ProductEntity {
     private String pdesc;
     private String seller;
 
+    private boolean delFlag; //Soft Delete 방식을 위한 delFlag
+
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
             name = "tbl_product_img",
@@ -74,6 +76,9 @@ public class ProductEntity {
     public void changeDesc(String pdesc) {
         this.pdesc = pdesc;
     }
-    
+    //상품 삭제 처리
+    public void softDelete() {
+        this.delFlag = true;
+    }
 
 }

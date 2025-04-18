@@ -109,6 +109,16 @@ public class ProductRepoTests {
         repo.save(product);
     }
 
+    @Test
+    @Commit
+    public void deleteProduct() {
+        ProductEntity product = repo.selectOne(57L);
+
+        product.softDelete();
+
+        repo.save(product);
+    }
+
 
 
 }

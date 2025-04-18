@@ -36,7 +36,8 @@ public class ProductSearchImpl implements ProductSearch {
         query.leftJoin(qProductEntity.images, qProductImgEntity);
         query.leftJoin(qProductReviewEntity).on(qProductReviewEntity.product.eq(qProductEntity));
         //검색조건
-        query.where(qProductImgEntity.ord.eq(0));
+        query.where(qProductImgEntity.ord.eq(0)
+                .and(qProductEntity.delFlag.isFalse()));
         //정렬조건
         query.groupBy(qProductEntity);
         query.orderBy(new OrderSpecifier<>(Order.DESC, qProductEntity.pno));
