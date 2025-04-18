@@ -46,4 +46,13 @@ public class ProductEntity {
     protected LocalDateTime modDate;
 
 
+    public void addImage(String fileName) {
+
+        ProductImgEntity productImgEntity = new ProductImgEntity();
+        productImgEntity.setImgName(fileName);
+        productImgEntity.setOrd(images.size());
+
+        images.add(productImgEntity);
+    }
+
 }

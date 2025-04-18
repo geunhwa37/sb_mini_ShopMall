@@ -21,7 +21,7 @@ public class ProductReviewEntity {
 
     private String reviewer;
     private String comment;
-    private String score; //1~5
+    private int score; //1~5
 
     @ManyToOne(fetch = FetchType.LAZY)
     private ProductEntity product;

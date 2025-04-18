@@ -1,5 +1,4 @@
 package org.zerock.sb_mini.product.dto;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
