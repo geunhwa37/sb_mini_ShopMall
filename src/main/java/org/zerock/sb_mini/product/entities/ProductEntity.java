@@ -2,6 +2,7 @@ package org.zerock.sb_mini.product.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -35,6 +36,7 @@ public class ProductEntity {
     @CollectionTable(
             name = "tbl_product_img",
             joinColumns = @JoinColumn(name="product_pno")) //img에 만들어짐
+    @BatchSize(size = 20)
     @Builder.Default // 빌더로 생성 시 images 필드가 null이 되지 않도록 기본값 지정
     private List<ProductImgEntity> images = new ArrayList<>();
 

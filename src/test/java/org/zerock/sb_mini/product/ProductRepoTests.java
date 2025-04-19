@@ -9,10 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
-import org.zerock.sb_mini.product.dto.PageRequestDTO;
-import org.zerock.sb_mini.product.dto.PageResponseDTO;
-import org.zerock.sb_mini.product.dto.ProductListDTO;
-import org.zerock.sb_mini.product.dto.ProductReadDTO;
+import org.springframework.transaction.annotation.Transactional;
+import org.zerock.sb_mini.product.dto.*;
 import org.zerock.sb_mini.product.entities.ProductEntity;
 import org.zerock.sb_mini.product.repository.ProductRepository;
 
@@ -64,6 +62,16 @@ public class ProductRepoTests {
         PageResponseDTO<ProductListDTO> result = repo.listQuerydsl(requestDTO);
 
         log.info(result);
+    }
+
+    @Transactional
+    @Test
+    public void listAllProducts() {
+        PageRequestDTO requestDTO = new PageRequestDTO();
+
+        PageResponseDTO<ProductListAllDTO> result = repo.listAllQuerydsl(requestDTO);
+
+        result.getDtoList().forEach(dto -> log.info(dto));
     }
 
     //조회 - 1개
