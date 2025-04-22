@@ -32,5 +32,6 @@ spring:
 logging:
   level:
     org.zerock.sb2: INFO
+    org.springframework.security: TRACE
 
 
