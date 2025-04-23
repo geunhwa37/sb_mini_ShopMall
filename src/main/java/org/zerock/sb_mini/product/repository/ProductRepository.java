@@ -12,13 +12,13 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long>, P
 
 
     //목록 출력
-    @Query("select p.pno, p.pname, p.price, p.seller, pi.imgName " +
-            "from ProductEntity p left join p.images pi " +
+    @Query("select p.pno, p.pname, p.price, p.seller, pi.fileName " +
+            "from ProductEntity p left join p.files pi " +
             "where pi.ord = 0 and p.delFlag = false")
     Page<Object[]> list(Pageable pageable);
 
     //조회 - 1개
-    @EntityGraph(attributePaths = "images", type = EntityGraph.EntityGraphType.FETCH)
+    @EntityGraph(attributePaths = "files", type = EntityGraph.EntityGraphType.FETCH)
     @Query("select p from ProductEntity p where p.pno = :pno")
     ProductEntity selectOne(@Param("pno") Long pno);
 

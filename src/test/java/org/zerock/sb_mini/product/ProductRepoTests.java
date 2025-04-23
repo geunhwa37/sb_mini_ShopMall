@@ -28,16 +28,17 @@ public class ProductRepoTests {
     @Test
     public void insertProduct() {
 
-        for(int i = 0; i < 30; i++){
+        for(int i = 1; i < 120; i++){
             ProductEntity product = ProductEntity.builder()
                     .pname("Product" + i)
                     .price(5000)
+                    .pdesc("테스트용 상품입니다. 상품 설명은 추후 업데이트 예정입니다.")
                     .seller("user00")
                     .build();
 
             //상품하나당 이미지 2개
-            product.addImage(i +"_img0.jpg");
-            product.addImage(i +"_img1.jpg");
+            product.addFile("banana.jpeg");
+            product.addFile("potato.jpeg");
 
             repo.save(product);
         }//end for
@@ -64,7 +65,7 @@ public class ProductRepoTests {
         log.info(result);
     }
 
-    @Transactional
+/*    @Transactional
     @Test
     public void listAllProducts() {
         PageRequestDTO requestDTO = new PageRequestDTO();
@@ -72,10 +73,11 @@ public class ProductRepoTests {
         PageResponseDTO<ProductListAllDTO> result = repo.listAllQuerydsl(requestDTO);
 
         result.getDtoList().forEach(dto -> log.info(dto));
-    }
+    }*/
 
     //조회 - 1개
     @Test
+    @Transactional
     public void readProduct() {
         Optional<ProductEntity> result = repo.findById(31L);
 
@@ -91,7 +93,7 @@ public class ProductRepoTests {
         ProductEntity product = repo.selectOne(31L);
 
         log.info(product); //tbl_product_img 테이블은 처리되지 않음
-        log.info(product.getImages());
+        log.info(product.getFiles());
     }
 
     @Test

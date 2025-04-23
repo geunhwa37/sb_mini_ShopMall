@@ -9,5 +9,5 @@ public interface ProductSearch {
 
     PageResponseDTO<ProductListDTO> listQuerydsl(PageRequestDTO pageRequestDTO);
 
-    PageResponseDTO<ProductListAllDTO> listAllQuerydsl(PageRequestDTO pageRequestDTO);
+    /*PageResponseDTO<ProductListAllDTO> listAllQuerydsl(PageRequestDTO pageRequestDTO);*/
 }

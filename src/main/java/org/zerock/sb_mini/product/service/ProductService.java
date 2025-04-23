@@ -3,6 +3,8 @@ package org.zerock.sb_mini.product.service;
 import org.zerock.sb_mini.product.dto.*;
 import org.zerock.sb_mini.product.entities.ProductEntity;
 
+import java.util.UUID;
+
 public interface ProductService {
 
     Long add(ProductAddDTO productAddDTO);
@@ -24,8 +26,6 @@ public interface ProductService {
                 .pdesc(addDTO.getPdesc())
                 .price(addDTO.getPrice())
                 .build();
-
-        addDTO.getImageNames().forEach(imageName -> entity.addImage(imageName));
 
         return entity;
     }

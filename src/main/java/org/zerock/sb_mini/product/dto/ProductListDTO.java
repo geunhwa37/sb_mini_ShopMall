@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.web.multipart.MultipartFile;
 import org.zerock.sb_mini.product.entities.ProductImgEntity;
 
 import java.time.LocalDateTime;
@@ -22,7 +23,8 @@ public class ProductListDTO {
     private String pname;
     private int price;
     private String seller;
-    private String imgName;
+
+    private String fileName;
 
     private double avgRating; //평점
     private long reviewCnt;

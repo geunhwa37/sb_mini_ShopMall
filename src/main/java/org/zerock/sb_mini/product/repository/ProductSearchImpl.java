@@ -36,7 +36,7 @@ public class ProductSearchImpl implements ProductSearch {
         JPQLQuery<ProductEntity> query = queryFactory.selectFrom(qProductEntity);
 
         //join
-        query.leftJoin(qProductEntity.images, qProductImgEntity);
+        query.leftJoin(qProductEntity.files, qProductImgEntity);
         query.leftJoin(qProductReviewEntity).on(qProductReviewEntity.product.eq(qProductEntity));
         //검색조건
         query.where(qProductImgEntity.ord.eq(0)
@@ -55,7 +55,7 @@ public class ProductSearchImpl implements ProductSearch {
                 qProductEntity.pname,
                 qProductEntity.price,
                 qProductEntity.seller,
-                qProductImgEntity.imgName.as("imgName"),
+                qProductImgEntity.fileName.as("fileName"),
                 qProductReviewEntity.score.coalesce(0).avg().as("avgRating"), //null 값을 0으로 처리
                 qProductReviewEntity.count().as("reviewCnt")
         ));
@@ -70,7 +70,7 @@ public class ProductSearchImpl implements ProductSearch {
                 .build();
     }
 
-    @Override
+/*    @Override
     //전체 데이터 조회 - 전체 이미지 다 보여주기
     public PageResponseDTO<ProductListAllDTO> listAllQuerydsl(PageRequestDTO pageRequestDTO) {
 
@@ -137,6 +137,6 @@ public class ProductSearchImpl implements ProductSearch {
                 .total((int) total)
                 .pageRequestDTO(pageRequestDTO)
                 .build();
-    }
+    }*/
 
 }

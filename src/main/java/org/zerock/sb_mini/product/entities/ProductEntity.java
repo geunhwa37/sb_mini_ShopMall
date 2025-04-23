@@ -38,7 +38,7 @@ public class ProductEntity {
             joinColumns = @JoinColumn(name="product_pno")) //img에 만들어짐
     @BatchSize(size = 20)
     @Builder.Default // 빌더로 생성 시 images 필드가 null이 되지 않도록 기본값 지정
-    private List<ProductImgEntity> images = new ArrayList<>();
+    private List<ProductImgEntity> files = new ArrayList<>();
 
 
     @CreatedDate
@@ -54,17 +54,17 @@ public class ProductEntity {
     //변경하고 싶을 때는 setXXX이 아니라 별도의 메서드를 이용함(필수는 아님) - 업데이트시!
     
     //이미지 추가
-    public void addImage(String fileName) {
+    public void addFile(String fileName) {
 
         ProductImgEntity productImgEntity = new ProductImgEntity();
-        productImgEntity.setImgName(fileName);
-        productImgEntity.setOrd(images.size());
+        productImgEntity.setFileName(fileName);
+        productImgEntity.setOrd(files.size());
 
-        images.add(productImgEntity);
+        files.add(productImgEntity);
     }
     //이미지 삭제
-    public void clearImages() {
-        images.clear();
+    public void clearFiles() {
+        files.clear();
     }
     // 상품 이름 변경
     public void changePrice(int price) {

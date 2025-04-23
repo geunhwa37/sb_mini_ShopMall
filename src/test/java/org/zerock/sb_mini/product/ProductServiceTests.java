@@ -22,7 +22,7 @@ public class ProductServiceTests {
         dto.setPname("Test");
         dto.setPdesc("Test");
         dto.setPrice(1000);
-        dto.setImageNames(List.of("aaa.jpg","bbb.jpg","ccc.jpg"));
+        dto.setFiles(List.of("potato.jpeg","banana.jpeg"));
 
         Long pno = service.add(dto);
 
@@ -52,7 +52,7 @@ public class ProductServiceTests {
         dto.setPno(2L);
         dto.setPdesc("Test");
         dto.setPrice(1000);
-        dto.setImageNames(List.of("aaa.jpg","bbb.jpg","ccc.jpg"));
+        /*dto.setImageNames(List.of("aaa.jpg","bbb.jpg","ccc.jpg"));*/
         service.modify(dto);
 
         log.info(service.read(2L));

@@ -2,6 +2,12 @@
 
 #Connection pool 
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 50MB
+
   thymeleaf:
     cache: false
   datasource:
@@ -34,4 +40,6 @@ logging:
     org.zerock.sb2: INFO
     org.springframework.security: TRACE
 
-
+org:
+  zerock:
+    upload: upload

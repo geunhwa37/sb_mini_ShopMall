@@ -48,6 +48,9 @@ dependencies {
     //securtiy
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+    //파일 업로드 - 썸네일
+    implementation("net.coobird:thumbnailator:0.4.20")
 }
 
 tasks.named('test') {

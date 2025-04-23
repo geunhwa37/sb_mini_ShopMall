@@ -13,7 +13,7 @@ public class ProductImgEntity {
 
     //product_pno는 자동으로 만들어짐
 
-    private String imgName;
+    private String fileName;
     private int ord;
 
 }
